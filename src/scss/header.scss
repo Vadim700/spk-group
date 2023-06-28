@@ -1,0 +1,23 @@
+.header {
+	padding: 34px 0 20px;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		max-width: rem(1273);
+	}
+
+	&__logo {
+		font-family: "dinpro";
+		color: #000;
+		font-size: 32px;
+		font-weight: 700;
+	}
+
+	&__menu {
+	}
+
+	&__actions {
+	}
+}
