@@ -18,11 +18,18 @@
 		font-family: araboto;
 		font-weight: 700;
 		line-height: 1.5;
+		transition: all 0.3s ease 0s;
 
 		&_icon {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+		}
+
+		@media (hover: hover) {
+			&_icon_location:hover {
+				transform: translateY(-5px);
+			}
 		}
 	}
 
