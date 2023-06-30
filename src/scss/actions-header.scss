@@ -1,5 +1,6 @@
 .actions-header {
 	position: relative;
+	transform: translateY(5px);
 
 	&__grid {
 		display: grid;
@@ -8,8 +9,6 @@
 		grid-auto-flow: column;
 		column-gap: 5px;
 		align-items: center;
-
-		// border: 1px solid #000;
 	}
 
 	&__item {

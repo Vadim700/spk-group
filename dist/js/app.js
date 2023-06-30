@@ -264,21 +264,21 @@
         if (target.closest(".actions-header__item_icon_location")) locationList.classList.toggle("open"); else locationList.classList.remove("open");
     }));
     document.addEventListener("keydown", (event => {
-        if ("Escape" === event.code) document.querySelector(".actions-header__list").classList.remove("open");
+        if ("Escape" === event.code) {
+            document.querySelector(".actions-header__list").classList.remove("open");
+            document.querySelector(".menu__grid").classList.remove("active");
+            document.querySelector(".menu__grid").classList.add("close");
+        }
     }));
     const menuHeader = document.querySelector(".menu");
     menuHeader.addEventListener("click", (event => {
         const target = event.target;
-        if (target.closest(".menu__list")) {
-            event.preventDefault();
-            menuHeader.querySelector(".menu__sublist").classList.add("active");
-        }
-        if (target.closest(".menu__subitem")) {
-            menuHeader.querySelectorAll(".menu__subitem").forEach((elem => {
-                elem.classList.remove("selected");
-            }));
-            target.parentNode.classList.add("selected");
-        }
+        menuHeader?.querySelector(".menu__item");
+        const menuGrid = menuHeader?.querySelector(".menu__grid");
+        menuHeader?.querySelector(".menu__sublist");
+        menuHeader?.querySelector(".menu__sub-sublist");
+        if (target.closest(".menu__link")) menuGrid.classList.toggle("active");
+        if (target.closest(".menu__link")) menuHeader.querySelector(".menu__item").classList.add("active");
     }));
     window["FLS"] = true;
     isWebp();
