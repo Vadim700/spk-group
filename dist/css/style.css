@@ -258,6 +258,7 @@ h6 {
 .menu__grid {
   display: grid;
   grid-template-columns: 200px 390px;
+  grid-template-rows: auto;
   padding: 23px 16px 25px 63px;
   position: absolute;
   max-width: 655px;

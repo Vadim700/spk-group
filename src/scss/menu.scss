@@ -75,6 +75,7 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: 200px 390px;
+		grid-template-rows: auto;
 		padding: 23px 16px 25px 63px;
 
 		position: absolute;
@@ -85,17 +86,12 @@
 		background: rgba($color: #fff, $alpha: 0.8);
 		clip: rect(0, 0, 0, 0);
 
-		// animation: menuFullClose 0.7s ease-out forwards 0s;
-
 		&.step-one {
 			animation: menuHulfOpen 0.7s ease-out forwards 0s;
 		}
 
 		&.step-two {
 			animation: menuFullOpen 0.7s ease-out forwards 0s;
-		}
-
-		&.close {
 		}
 	}
 
