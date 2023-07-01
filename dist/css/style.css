@@ -126,7 +126,7 @@ h6 {
 
 @keyframes menuFullOpen {
   from {
-    clip: rect(0, 263px, 0px, 0);
+    clip: rect(0, 263px, 260px, 0);
   }
   50% {
     clip: rect(0, 263px, 520px, 0);
@@ -266,10 +266,12 @@ h6 {
   left: -20px;
   background: rgba(255, 255, 255, 0.8);
   clip: rect(0, 0, 0, 0);
-  animation: menuHulfClose 0.7s ease-out forwards 0s;
 }
-.menu__grid.active {
+.menu__grid.step-one {
   animation: menuHulfOpen 0.7s ease-out forwards 0s;
+}
+.menu__grid.step-two {
+  animation: menuFullOpen 0.7s ease-out forwards 0s;
 }
 .menu__sublist {
   font-size: 10px;
@@ -323,6 +325,9 @@ h6 {
   top: 9px;
   left: -28px;
   background-color: #3f60b1;
+}
+.menu__sublink:focus {
+  color: #3f60b1;
 }
 .menu__sub-sublist {
   font-size: 10px;

@@ -85,11 +85,16 @@
 		background: rgba($color: #fff, $alpha: 0.8);
 		clip: rect(0, 0, 0, 0);
 
-		&.active {
+		// animation: menuFullClose 0.7s ease-out forwards 0s;
+
+		&.step-one {
 			animation: menuHulfOpen 0.7s ease-out forwards 0s;
 		}
 
-		animation: menuHulfClose 0.7s ease-out forwards 0s;
+		&.step-two {
+			animation: menuFullOpen 0.7s ease-out forwards 0s;
+		}
+
 		&.close {
 		}
 	}
@@ -162,6 +167,10 @@
 			top: 9px;
 			left: -28px;
 			background-color: $blueColor;
+		}
+
+		&:focus {
+			color: $blueColor;
 		}
 	}
 

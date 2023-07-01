@@ -1,7 +1,7 @@
 // menu__grid full open
 @keyframes menuFullOpen {
 	from {
-		clip: rect(0, 263px, 0px, 0);
+		clip: rect(0, 263px, 260px, 0);
 	}
 	50% {
 		clip: rect(0, 263px, 520px, 0);
