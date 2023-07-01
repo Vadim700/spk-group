@@ -266,7 +266,17 @@
     document.addEventListener("keydown", (event => {
         if ("Escape" === event.code) {
             document.querySelector(".actions-header__list").classList.remove("open");
-            document.querySelectorAll(".menu__grid").forEach((item => item.style.animation = ""));
+            document.querySelectorAll(".menu__grid").forEach((item => item.animate([ {
+                clip: "rect(0, 655px, 520px, 0)"
+            }, {
+                clip: "rect(0, 263px, 520px, 0)"
+            }, {
+                clip: "rect(0, 263px, 0, 0)"
+            } ], {
+                duration: 0,
+                iterations: 1,
+                fill: "forwards"
+            })));
         }
     }));
     const menuHeader = document.querySelector(".menu");
@@ -292,7 +302,7 @@
         }, {
             clip: "rect(0, 263px, 520px, 0)"
         }, {
-            clip: "rect(0, 263px, 0px, 0)"
+            clip: "rect(0, 263px, 0, 0)"
         } ];
         const options = {
             duration: 700,
@@ -303,15 +313,24 @@
         if (target.closest(".menu__item")) {
             menuHeader.querySelectorAll(".menu__item").forEach((item => item.classList.remove("active")));
             target.parentNode.classList.toggle("active");
-            document.querySelectorAll(".menu__grid").forEach((item => item.style.animation = ""));
+            menuHeader.querySelectorAll(".menu__grid").forEach((item => item.animate(fullClose, {
+                duration: 0,
+                iterations: 1,
+                fill: "forwards"
+            })));
             target.parentElement.lastElementChild.animate(hulfOpen, options);
         }
         if (target.closest(".menu__subitem")) {
-            document.querySelectorAll(".menu__subitem").forEach((item => item.classList.remove("selected")));
+            menuHeader.querySelectorAll(".menu__subitem").forEach((item => item.classList.remove("selected")));
             target.parentNode.classList.add("selected");
             target.parentElement.parentElement.parentElement.animate(fullOpen, options);
         }
-        if (target.closest(".menu__sub-subitem")) target.parentElement.parentElement.parentElement.animate(fullClose, options);
+        if (target.closest(".menu__sub-subitem")) target.parentElement.parentElement.parentElement.animate(fullClose, {
+            duration: 500,
+            iterations: 1,
+            fill: "forwards",
+            easing: "ease-out"
+        });
     }));
     window["FLS"] = true;
     isWebp();

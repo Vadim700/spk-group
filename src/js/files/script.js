@@ -21,7 +21,15 @@ document.querySelector('.actions-header').addEventListener('click', event => {
 document.addEventListener('keydown', event => {
 	if (event.code === 'Escape') {
 		document.querySelector('.actions-header__list').classList.remove('open');
-		document.querySelectorAll('.menu__grid').forEach(item => item.style.animation = '');
+		document.querySelectorAll('.menu__grid').forEach(item => item.animate([
+			{ clip: 'rect(0, 655px, 520px, 0)' },
+			{ clip: 'rect(0, 263px, 520px, 0)' },
+			{ clip: 'rect(0, 263px, 0, 0)' },
+		], {
+			duration: 0,
+			iterations: 1,
+			fill: "forwards",
+		}));
 	}
 });
 
@@ -46,10 +54,14 @@ menuHeader.addEventListener("click", event => {
 	const fullClose = [
 		{ clip: 'rect(0, 655px, 520px, 0)' },
 		{ clip: 'rect(0, 263px, 520px, 0)' },
-		{ clip: 'rect(0, 263px, 0px, 0)' },
+		{ clip: 'rect(0, 263px, 0, 0)' },
 	];
 
-	const halfClose = [];
+	const hulfClose = [
+		{ clip: 'rect(0, 263px, 260px, 0)' },
+		{ clip: 'rect(0, 263px, 0, 0)' },
+		{ clip: 'rect(0, 263px, 0, 0)' },
+	];
 
 	const options = {
 		duration: 700,
@@ -63,24 +75,49 @@ menuHeader.addEventListener("click", event => {
 			.forEach(item => item.classList.remove('active'));
 		target.parentNode.classList.toggle('active');
 
-		document.querySelectorAll('.menu__grid')
-			.forEach(item => item.style.animation = '')
-		target.parentElement.lastElementChild.animate(hulfOpen, options)
+
+		menuHeader.querySelectorAll('.menu__grid')
+			.forEach(item => item.animate(fullClose, {
+				duration: 0,
+				iterations: 1,
+				fill: "forwards",
+			}));
+		target.parentElement.lastElementChild.animate(hulfOpen, options);
+
+		// setTimeout(() => {
+		// 	target.parentElement.lastElementChild.classList.toggle('open');
+		// }, 50);
+
+		// if (target.parentElement.lastElementChild.classList.contains('open')) {
+		// 	target.parentElement.lastElementChild.animate(hulfClose, {
+		// 		duration: 400,
+		// 		iterations: 1,
+		// 		fill: "forwards",
+		// 	});
+		// }
 	}
 
+
+
+
 	if (target.closest('.menu__subitem')) {
-		document.querySelectorAll('.menu__subitem')
+		menuHeader.querySelectorAll('.menu__subitem')
 			.forEach(item => item.classList.remove('selected'));
 		target.parentNode.classList.add('selected');
 
-		target.parentElement.parentElement.parentElement.animate(fullOpen, options)
+		target.parentElement.parentElement.parentElement.animate(fullOpen, options);
 	}
 
 	if (target.closest('.menu__sub-subitem')) {
-		target.parentElement.parentElement.parentElement.animate(fullClose, options)
-
+		target.parentElement.parentElement.parentElement.animate(fullClose, {
+			duration: 500,
+			iterations: 1,
+			fill: "forwards",
+			easing: "ease-out",
+		});
 	}
 });
+
 
 
 
