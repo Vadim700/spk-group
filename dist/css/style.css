@@ -2,15 +2,15 @@
 @font-face {
   font-family: araboto;
   font-display: swap;
-  src: url("../fonts/araboto-medium.woff2") format("woff2"), url("../fonts/araboto-medium.woff") format("woff");
-  font-weight: 500;
+  src: url("../fonts/araboto-bold.woff2") format("woff2"), url("../fonts/araboto-bold.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: araboto;
   font-display: swap;
-  src: url("../fonts/araboto-bold.woff2") format("woff2"), url("../fonts/araboto-bold.woff") format("woff");
-  font-weight: 700;
+  src: url("../fonts/araboto-medium.woff2") format("woff2"), url("../fonts/araboto-medium.woff") format("woff");
+  font-weight: 500;
   font-style: normal;
 }
 @font-face {
@@ -267,12 +267,6 @@ h6 {
   left: -20px;
   background: rgba(255, 255, 255, 0.8);
   clip: rect(0, 0, 0, 0);
-}
-.menu__grid.step-one {
-  animation: menuHulfOpen 0.7s ease-out forwards 0s;
-}
-.menu__grid.step-two {
-  animation: menuFullOpen 0.7s ease-out forwards 0s;
 }
 .menu__sublist {
   font-size: 10px;

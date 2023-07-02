@@ -282,21 +282,8 @@
     const menuHeader = document.querySelector(".menu");
     menuHeader.addEventListener("click", (event => {
         const target = event.target;
-        menuHeader?.querySelector(".menu__grid");
-        const fullOpen = [ {
-            clip: "rect(0, 263px, 260px, 0)"
-        }, {
-            clip: "rect(0, 263px, 520px, 0)"
-        }, {
-            clip: "rect(0, 655px, 520px, 0)"
-        } ];
-        const hulfOpen = [ {
-            clip: "rect(0, 263px, 0, 0)"
-        }, {
-            clip: "rect(0, 263px, 260px, 0)"
-        }, {
-            clip: "rect(0, 263px, 260px, 0)"
-        } ];
+        const menuGrid = menuHeader?.querySelector(".menu__grid");
+        let leftListHeight = 0;
         const fullClose = [ {
             clip: "rect(0, 655px, 520px, 0)"
         }, {
@@ -313,17 +300,36 @@
         if (target.closest(".menu__item")) {
             menuHeader.querySelectorAll(".menu__item").forEach((item => item.classList.remove("active")));
             target.parentNode.classList.toggle("active");
+            try {
+                for (let i of target.parentElement.lastElementChild.firstElementChild.children) leftListHeight += i.clientHeight + parseInt(window.getComputedStyle(i).marginBottom);
+            } catch (error) {
+                console.log(error);
+            }
+            leftListHeight += parseInt(window.getComputedStyle(menuGrid).paddingTop) + 28;
+            console.log(leftListHeight);
             menuHeader.querySelectorAll(".menu__grid").forEach((item => item.animate(fullClose, {
                 duration: 0,
                 iterations: 1,
                 fill: "forwards"
             })));
-            target.parentElement.lastElementChild.animate(hulfOpen, options);
+            target.parentElement.lastElementChild.animate([ {
+                clip: "rect(0, 263px, 0, 0)"
+            }, {
+                clip: `rect(0, 263px, ${leftListHeight}px, 0)`
+            }, {
+                clip: `rect(0, 263px, ${leftListHeight}px, 0)`
+            } ], options);
         }
         if (target.closest(".menu__subitem")) {
             menuHeader.querySelectorAll(".menu__subitem").forEach((item => item.classList.remove("selected")));
             target.parentNode.classList.add("selected");
-            target.parentElement.parentElement.parentElement.animate(fullOpen, options);
+            target.parentElement.parentElement.parentElement.animate([ {
+                clip: `rect(0, 263px, ${leftListHeight}px, 0)`
+            }, {
+                clip: "rect(0, 263px, 520px, 0)"
+            }, {
+                clip: "rect(0, 655px, 520px, 0)"
+            } ], options);
         }
         if (target.closest(".menu__sub-subitem")) target.parentElement.parentElement.parentElement.animate(fullClose, {
             duration: 500,
