@@ -21,6 +21,7 @@ document.querySelector('.actions-header').addEventListener('click', event => {
 document.addEventListener('keydown', event => {
 	if (event.code === 'Escape') {
 		document.querySelector('.actions-header__list').classList.remove('open');
+
 		document.querySelectorAll('.menu__grid').forEach(item => item.animate([
 			{ clip: 'rect(0, 655px, 520px, 0)' },
 			{ clip: 'rect(0, 263px, 520px, 0)' },
@@ -39,7 +40,9 @@ const menuHeader = document.querySelector('.menu');
 menuHeader.addEventListener("click", event => {
 	const target = event.target;
 	const menuGrid = menuHeader?.querySelector('.menu__grid');
+
 	let leftListHeight = 0;
+	let rightListHeight = 0;
 
 	const fullOpen = [
 		{ clip: 'rect(0, 263px, 260px, 0)' },
@@ -72,22 +75,18 @@ menuHeader.addEventListener("click", event => {
 		easing: "ease-out",
 	};
 
-	if (target.closest('.menu__item')) {
+	if (target.parentElement.classList.contains('menu__item')) {
 		menuHeader.querySelectorAll('.menu__item')
 			.forEach(item => item.classList.remove('active'));
 		target.parentNode.classList.toggle('active');
 
-		try {
-			for(let i of target.parentElement.lastElementChild.firstElementChild.children){
-				leftListHeight += i.clientHeight + parseInt(window.getComputedStyle(i).marginBottom);
-			}	
-		} catch (error) {
-			console.log(error);
+		for (let i of target.parentElement.lastElementChild.firstElementChild.children) {
+			leftListHeight += i.clientHeight + parseInt(window.getComputedStyle(i).marginBottom);
 		}
-		
+
 		leftListHeight += parseInt(window.getComputedStyle(menuGrid).paddingTop) + 28;
-		console.log(leftListHeight);
-	
+
+
 		menuHeader.querySelectorAll('.menu__grid')
 			.forEach(item => item.animate(fullClose, {
 				duration: 0,
@@ -100,19 +99,22 @@ menuHeader.addEventListener("click", event => {
 			{ clip: `rect(0, 263px, ${leftListHeight}px, 0)` },
 			{ clip: `rect(0, 263px, ${leftListHeight}px, 0)` },
 		], options);
-
 	}
-	
-	if (target.closest('.menu__subitem')) {
+
+	if (target.parentElement.classList.contains('menu__subitem')) {
 		menuHeader.querySelectorAll('.menu__subitem')
-			.forEach(item => item.classList.remove('selected'));
-		target.parentNode.classList.add('selected');
+			.forEach(item => item.classList.remove('active'));
+		target.parentNode.classList.add('active');
 
-		// console.log(target.parentElement.parentElement.parentElement.lastElementChild.children)
+		console.log()
 
-		
+		for (let i of target.parentElement.parentElement.parentElement.firstElementChild.children) {
+			leftListHeight += i.clientHeight + parseInt(window.getComputedStyle(i).marginBottom);
+		}
+		leftListHeight += parseInt(window.getComputedStyle(menuGrid).paddingTop) + 28;
+
 		target.parentElement.parentElement.parentElement.animate([
-			{ clip: `rect(0, 263px, ${leftListHeight }px, 0)` },
+			{ clip: `rect(0, 263px, ${leftListHeight}px, 0)` },
 			{ clip: 'rect(0, 263px, 520px, 0)' },
 			{ clip: 'rect(0, 655px, 520px, 0)' }
 		], options);

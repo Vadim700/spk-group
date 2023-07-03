@@ -212,8 +212,8 @@ h6 {
 .menu__item {
   position: relative;
 }
-.menu__item.active .menu__sublist {
-  animation: menuHulfOpen 0.7s ease-out forwards 0s;
+.menu__item.active > a {
+  color: #3f60b1;
 }
 .menu__link {
   position: relative;
@@ -301,13 +301,13 @@ h6 {
     border-color: #3f60b1;
   }
 }
-.menu__subitem.selected .menu__sublink {
+.menu__subitem.active .menu__sublink {
   color: #3f60b1;
 }
-.menu__subitem.selected .menu__sublink::before {
+.menu__subitem.active .menu__sublink::before {
   content: "";
 }
-.menu__subitem.selected::after {
+.menu__subitem.active::after {
   border-color: #3f60b1;
 }
 .menu__sublink {

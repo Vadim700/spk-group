@@ -297,16 +297,11 @@
             fill: "forwards",
             easing: "ease-out"
         };
-        if (target.closest(".menu__item")) {
+        if (target.parentElement.classList.contains("menu__item")) {
             menuHeader.querySelectorAll(".menu__item").forEach((item => item.classList.remove("active")));
             target.parentNode.classList.toggle("active");
-            try {
-                for (let i of target.parentElement.lastElementChild.firstElementChild.children) leftListHeight += i.clientHeight + parseInt(window.getComputedStyle(i).marginBottom);
-            } catch (error) {
-                console.log(error);
-            }
+            for (let i of target.parentElement.lastElementChild.firstElementChild.children) leftListHeight += i.clientHeight + parseInt(window.getComputedStyle(i).marginBottom);
             leftListHeight += parseInt(window.getComputedStyle(menuGrid).paddingTop) + 28;
-            console.log(leftListHeight);
             menuHeader.querySelectorAll(".menu__grid").forEach((item => item.animate(fullClose, {
                 duration: 0,
                 iterations: 1,
@@ -320,9 +315,12 @@
                 clip: `rect(0, 263px, ${leftListHeight}px, 0)`
             } ], options);
         }
-        if (target.closest(".menu__subitem")) {
-            menuHeader.querySelectorAll(".menu__subitem").forEach((item => item.classList.remove("selected")));
-            target.parentNode.classList.add("selected");
+        if (target.parentElement.classList.contains("menu__subitem")) {
+            menuHeader.querySelectorAll(".menu__subitem").forEach((item => item.classList.remove("active")));
+            target.parentNode.classList.add("active");
+            console.log();
+            for (let i of target.parentElement.parentElement.parentElement.firstElementChild.children) leftListHeight += i.clientHeight + parseInt(window.getComputedStyle(i).marginBottom);
+            leftListHeight += parseInt(window.getComputedStyle(menuGrid).paddingTop) + 28;
             target.parentElement.parentElement.parentElement.animate([ {
                 clip: `rect(0, 263px, ${leftListHeight}px, 0)`
             }, {
