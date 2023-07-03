@@ -212,8 +212,8 @@ h6 {
 .menu__item {
   position: relative;
 }
-.menu__item.active .menu__sublist {
-  animation: menuHulfOpen 0.7s ease-out forwards 0s;
+.menu__item.active > a {
+  color: #3f60b1;
 }
 .menu__link {
   position: relative;
@@ -258,6 +258,7 @@ h6 {
 .menu__grid {
   display: grid;
   grid-template-columns: 200px 390px;
+  grid-template-rows: auto;
   padding: 23px 16px 25px 63px;
   position: absolute;
   max-width: 655px;
@@ -266,12 +267,6 @@ h6 {
   left: -20px;
   background: rgba(255, 255, 255, 0.8);
   clip: rect(0, 0, 0, 0);
-}
-.menu__grid.step-one {
-  animation: menuHulfOpen 0.7s ease-out forwards 0s;
-}
-.menu__grid.step-two {
-  animation: menuFullOpen 0.7s ease-out forwards 0s;
 }
 .menu__sublist {
   font-size: 10px;
@@ -306,13 +301,13 @@ h6 {
     border-color: #3f60b1;
   }
 }
-.menu__subitem.selected .menu__sublink {
+.menu__subitem.active .menu__sublink {
   color: #3f60b1;
 }
-.menu__subitem.selected .menu__sublink::before {
+.menu__subitem.active .menu__sublink::before {
   content: "";
 }
-.menu__subitem.selected::after {
+.menu__subitem.active::after {
   border-color: #3f60b1;
 }
 .menu__sublink {
