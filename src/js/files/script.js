@@ -182,8 +182,6 @@ menuHeader.addEventListener('click', (event) => {
 
 		heightElement += parseInt(window.getComputedStyle(menuSubSublist).paddingTop) * 2;
 
-
-
 		menuHeader.querySelectorAll('.menu__sub-sublist-body').forEach(item => {
 			item.animate([
 				{ clip: `rect(0, 263px, 0, 0)` },
@@ -208,8 +206,6 @@ menuHeader.addEventListener('click', (event) => {
 			easing: "ease-out",
 		});
 	}
-
-
 });
 
 
