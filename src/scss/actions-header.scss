@@ -25,6 +25,10 @@
 			align-items: center;
 		}
 
+		&_location {
+			cursor: pointer;
+		}
+
 		@media (hover: hover) {
 			&_icon_location:hover {
 				transform: translateY(-5px);
@@ -33,14 +37,16 @@
 	}
 
 	&__list {
-		opacity: 0;
-		visibility: hidden;
+		// opacity: 0;
+		// visibility: hidden;
 
 		position: absolute;
 		width: 100%;
 		height: auto;
 		top: 24px;
 		left: 0;
+
+		clip: rect(0, 0, 0, 0);
 
 		padding: 15px 24px 18px 24px;
 		background-color: rgba($color: #ffffff, $alpha: 0.8);
@@ -64,7 +70,7 @@
 	}
 
 	.open {
-		opacity: 1;
-		visibility: visible;
+		// opacity: 1;
+		// visibility: visible;
 	}
 }
