@@ -12,4 +12,13 @@
 
 	font: normal 700 14 / normal $fontFamily;
 	color: #000;
+	transition: all 0.3s ease 0s;
+
+	@media(hover: hover){
+		&:hover{
+			background-color: var(--blue);
+			color: var(--white);
+			opacity: 0.87;
+		}
+	}
 }

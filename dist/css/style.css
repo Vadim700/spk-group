@@ -207,6 +207,14 @@ h6 {
   background: var(--white);
   font: normal 700 14/normal "araboto";
   color: #000;
+  transition: all 0.3s ease 0s;
+}
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    opacity: 0.87;
+  }
 }
 
 .header {
